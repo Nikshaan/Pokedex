@@ -42,7 +42,7 @@ const Body = () => {
     const pokeSearch = () => {
         document.getElementById("typeSelect").value = 'all';
         let pokeCopy = pokeArr.slice();
-        pokeCopy = pokeCopy.filter(pokemon => pokemon.name.includes(search));
+        pokeCopy = pokeCopy.filter(pokemon => pokemon.name.includes(search.toLocaleLowerCase()));
         setPokeShow(pokeCopy);
     }
     
@@ -193,7 +193,7 @@ const Body = () => {
         </motion.div>
 
         <div id="arrow" className={`fixed z-50 bg-black border-2 border-white rounded-full  bottom-1 right-1 lg:bottom-3 lg:right-3 xl:bottom-5 xl:right-5 ${showArrow?'block':'hidden'}`}>
-            <img onClick={() => {window.scrollTo({top: 0, behavior: 'smooth'});}} src={up_arrow} />
+            <img className="cursor-pointer" onClick={() => {window.scrollTo({top: 0, behavior: 'smooth'});}} src={up_arrow} />
         </div>
         
     </div>
