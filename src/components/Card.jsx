@@ -155,7 +155,7 @@ const Card = ({img, name, types, abilities, height, weight, stats}) => {
                     Abilities : {abilities}
                   </motion.p>
 
-                  <div className="h-96">
+                  <div className="h-64 lg:h-80">
                     <Bar options={chartOptions}  data={chartData} />
                   </div>
 

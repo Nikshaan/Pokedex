@@ -12,6 +12,7 @@ const Body = () => {
     const [limit, setLimit] = useState(151);
     const [offset, setOffset] = useState(0);
     const [currGen, setCurrGen] = useState(1);
+    const [currType, setCurrType] = useState("all");
     const [search, setSearch] = useState('');
     const [showArrow, setShowArrow] = useState(false);
 
@@ -48,6 +49,8 @@ const Body = () => {
     }
     
     const setType = (selectedType) => {
+        setCurrType(selectedType);
+        document.getElementById("searchbar").value = '';
         if(selectedType === 'all'){
             setPokeShow(pokeArr);
         }
@@ -148,7 +151,7 @@ const Body = () => {
                 transition = {{duration: 3, delay: 1,type :"spring"}}
                 className="text-white font-semibold text-xl lg:text-2xl font-Pixelify">TYPE</motion.p>
                 <div>
-                    <select id="typeSelect" onChange={(e) => setType(e.target.value)} className="bg-orange-400 font-Pixelify text-white text-center font-semibold text-lg py-[2px] border-white border-2 rounded-md lg:px-2">
+                    <select id="typeSelect" onChange={(e) => setType(e.target.value)} className="bg-orange-400 font-Pixelify text-white text-center font-semibold text-lg py-[2px] border-white border-2 rounded-md lg:px-2 cursor-pointer">
                         <option value="all">All types</option>
                         <option value="fire">Fire</option>
                         <option value="water">Water</option>
@@ -186,7 +189,7 @@ const Body = () => {
         transition={{delay: 1.5, duration: 2}}
         className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-y-24 lg:gap-y-32 2xl:gap-y-40 my-24 lg:my-32 2xl:my-40">
             {
-                (pokeShow.length != limit)
+                (pokeShow.length != limit && search == "" && currType == "all")
                 ?<div className="flex gap-2 w-full justify-center items-center absolute">
                 <p className="text-white text-3xl sm:text-4xl font-Pixelify text-center">Loading</p>
                 <img src={pokeballGIF} alt="loader" className="w-7 sm:w-9"/>
