@@ -13,6 +13,7 @@ https://nikshaan.github.io/Pokedex/
 * React.js
 * Tailwind CSS
 * Framer Motion
+* Chart.js
 
 
 ## Features
@@ -20,6 +21,7 @@ https://nikshaan.github.io/Pokedex/
 * Search Pokemon
 * Filter by type
 * Filter by generation
+* Chart of pokemon's stats
 * Scroll to top
 * Lazy Loading Images
 * API calling
