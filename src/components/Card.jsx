@@ -74,7 +74,7 @@ const Card = ({img, name, types, abilities, height, weight, stats}) => {
 
   return (
     <div className="flex justify-center items-start">
-        <div className={`cursor-pointer flex flex-col justify-center items-center w-2/3 rounded-3xl m-2 border-2 border-white shadow-white  ${showInfo? 'translation-all shadow-lg': 'shadow-md'}`} style={{backgroundColor: bgColor}}>
+        <div className={`flex flex-col justify-center items-center w-2/3 rounded-3xl m-2 border-2 border-white shadow-white  ${showInfo? 'translation-all shadow-lg': 'shadow-md'}`} style={{backgroundColor: bgColor}}>
 
             <LazyLoad offset={500} placeholder={<img className="w-36 -mt-24" src={pokeball}/>}>
               <img src={img} alt="pokemon" className={`w-48 -mt-24 lg:w-56 lg:-mt-32  2xl:w-72 2xl:-mt-36 ${showInfo? 'translation-all scale-110': null}`}/>
@@ -147,7 +147,7 @@ const Card = ({img, name, types, abilities, height, weight, stats}) => {
             </div>
             }
 
-            <img className="w-5 mt-2 bg-white rounded-full" src = {showInfo? up: down} onClick={() => setShowInfo(!showInfo)}/>
+            <img className="w-5 mt-2 bg-white rounded-full cursor-pointer" src = {showInfo? up: down} onClick={() => setShowInfo(!showInfo)}/>
 
             <p className="mt-2 text-3xl font-thin font-Pixelify">{name}</p>
 

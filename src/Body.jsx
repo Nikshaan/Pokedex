@@ -3,6 +3,7 @@ import pokemon_logo from "./assets/Pokemon-Logo.png";
 import Card from "./components/Card";
 import { motion } from "framer-motion";
 import up_arrow from "./assets/icons8-up-arrow-48.png";
+import pokeballGIF from "./assets/pokeballGIF.gif";
 
 const Body = () => {
 
@@ -19,8 +20,8 @@ const Body = () => {
         let res = await fetch(url);
         let data = await res.json();
         data.results.map(async(result) => {
-            let pokemonURL =  await fetch(result.url);
-            let pokemonData = await pokemonURL.json();
+            let pokemonRes =  await fetch(result.url);
+            let pokemonData = await pokemonRes.json();
         
             const pokemon = {
                 id: pokemonData.id,
@@ -80,7 +81,8 @@ const Body = () => {
         for(let i = 1; i<=8; i++){
             if( i == gen){
                 document.getElementById(`button${i}`).style.backgroundColor = "#C2410C";
-            }else{
+            }
+            else{
                 document.getElementById(`button${i}`).style.backgroundColor = "#FB923C";
             }
         }
@@ -90,7 +92,8 @@ const Body = () => {
         let y = window.scrollY;
         if(y>=1000){
             setShowArrow(true)
-        }else{
+        }
+        else{
             setShowArrow(false)
         }
     }
@@ -98,7 +101,6 @@ const Body = () => {
     window.addEventListener("scroll", scrollFunc);
 
     useEffect(() => {
-        
            fetchPokemon(limit, offset);
     }, [limit]);
 
@@ -184,7 +186,12 @@ const Body = () => {
         transition={{delay: 1.5, duration: 2}}
         className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-y-24 lg:gap-y-32 2xl:gap-y-40 my-24 lg:my-32 2xl:my-40">
             {
-                pokeShow.map((pokemon, index) => (
+                (pokeShow.length != limit)
+                ?<div className="flex gap-2 w-full justify-center items-center absolute">
+                <p className="text-white text-3xl sm:text-4xl font-Pixelify text-center">Loading</p>
+                <img src={pokeballGIF} className="w-7 sm:w-9"/>
+                </div>
+                :pokeShow.map((pokemon, index) => (
                     <Card key = {index} img = {pokemon.image} name = {pokemon.name} types = {pokemon.type} abilities = {pokemon.abilities}
                      height = {pokemon.height} weight = {pokemon.weight} stats = {pokemon.stats} desc = {pokemon.des}/>
                 )
