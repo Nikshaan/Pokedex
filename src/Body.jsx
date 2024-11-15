@@ -107,7 +107,7 @@ const Body = () => {
     useEffect(() => pokeSearch(), [search]);
 
   return (
-    <div className="bg-red-600 relative">
+    <div className="bg-red-700 relative">
 
         <div className="flex justify-center items-center p-2 pt-8">
 
@@ -189,7 +189,7 @@ const Body = () => {
                 (pokeShow.length != limit)
                 ?<div className="flex gap-2 w-full justify-center items-center absolute">
                 <p className="text-white text-3xl sm:text-4xl font-Pixelify text-center">Loading</p>
-                <img src={pokeballGIF} className="w-7 sm:w-9"/>
+                <img src={pokeballGIF} alt="loader" className="w-7 sm:w-9"/>
                 </div>
                 :pokeShow.map((pokemon, index) => (
                     <Card key = {index} img = {pokemon.image} name = {pokemon.name} types = {pokemon.type} abilities = {pokemon.abilities}
@@ -199,8 +199,8 @@ const Body = () => {
                 }
         </motion.div>
 
-        <div id="arrow" className={`fixed z-50 bg-black border-2 border-white rounded-full  bottom-1 right-1 lg:bottom-3 lg:right-3 xl:bottom-5 xl:right-5 ${showArrow?'block':'hidden'}`}>
-            <img className="cursor-pointer" onClick={() => {window.scrollTo({top: 0, behavior: 'smooth'});}} src={up_arrow} />
+        <div id="pageUp" className={`fixed z-50 bg-black border-2 border-white rounded-full  bottom-1 right-1 lg:bottom-3 lg:right-3 xl:bottom-5 xl:right-5 ${showArrow?'block':'hidden'}`}>
+            <img className="cursor-pointer" alt="arrow" onClick={() => {window.scrollTo({top: 0, behavior: 'smooth'});}} src={up_arrow} />
         </div>
         
     </div>
