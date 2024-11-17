@@ -23,11 +23,12 @@ const Body = () => {
         data.results.map(async(result) => {
             let pokemonRes =  await fetch(result.url);
             let pokemonData = await pokemonRes.json();
-        
+            let pokeImg = getImage(parseInt(pokemonData.id));
+            
             const pokemon = {
                 id: pokemonData.id,
                 name: pokemonData.name,
-                image: pokemonData.sprites.front_default,
+                image: pokeImg,
                 type: pokemonData.types.map((type) => type.type.name).join(', '),
                 abilities: pokemonData.abilities.map((ability) => ability.ability.name).join(', '),
                 height: pokemonData.height,
@@ -39,6 +40,14 @@ const Body = () => {
             setPokeShow(pokeArr => [...pokeArr, pokemon]);
             }
         );
+    }
+
+    const getImage = (id) => {
+        const URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other';
+        if (id >= 650 ) {
+            return `${URL}/official-artwork/${id}.png`;
+        }
+        return `${URL}/dream-world/${id}.svg`;
     }
 
     const pokeSearch = () => {
@@ -187,7 +196,7 @@ const Body = () => {
         initial = {{opacity: 0}}
         animate = {{opacity: 1}}
         transition={{delay: 1.5, duration: 2}}
-        className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-y-24 lg:gap-y-32 2xl:gap-y-40 my-24 lg:my-32 2xl:my-40">
+        className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-y-14 lg:gap-y-20 my-16 2xl:my-24">
             {
                 (pokeShow.length != limit && search == "" && currType == "all")
                 ?<div className="flex gap-2 w-full justify-center items-center absolute">

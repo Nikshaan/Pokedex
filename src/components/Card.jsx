@@ -117,7 +117,7 @@ const Card = ({img, name, types, abilities, height, weight, stats}) => {
       {
         label: "stats",
         data: pokemonStats,
-        backgroundColor: "red",
+        backgroundColor: bgColor,
         borderColor: "black",
         borderWidth: 1,
       }
@@ -128,12 +128,12 @@ const Card = ({img, name, types, abilities, height, weight, stats}) => {
     <div className="flex justify-center items-start">
         <div className={`flex flex-col justify-center items-center w-2/3 rounded-3xl m-2 border-2 border-white shadow-white  ${showInfo? 'translation-all shadow-lg': 'shadow-md'}`} style={{backgroundColor: bgColor}}>
 
-            <LazyLoad offset={500} placeholder={<img alt="pokeball" className="w-36 -mt-24" src={pokeball}/>}>
-              <img src={img} alt="pokemon" className={`w-48 -mt-24 lg:w-56 lg:-mt-32  2xl:w-72 2xl:-mt-36 ${showInfo? 'translation-all scale-110': null}`}/>
+            <LazyLoad offset={500} placeholder={<img alt="pokeball" className="w-28 2xl:w-40" src={pokeball}/>}>
+              <img src={img} alt="pokemon" className={`w-28 my-4 2xl:w-40 ${showInfo? 'translation-all scale-110': null}`}/>
             </LazyLoad>
 
             {
-              showInfo && <div className="bg-white w-5/6 md:w-11/12 font-Raleway h-full mx-5 p-3 flex flex-col gap-1 rounded-lg text-lg lg:text-xl">
+              showInfo && <div className="bg-white mt-2 w-5/6 md:w-11/12 font-Raleway h-full mx-5 p-3 flex flex-col gap-1 rounded-lg text-lg lg:text-xl transition-all duration-200">
                   <motion.p
                   initial = {{opacity: 0}}
                   animate = {{opacity: 1}}
@@ -155,7 +155,7 @@ const Card = ({img, name, types, abilities, height, weight, stats}) => {
                     Abilities : {abilities}
                   </motion.p>
 
-                  <div className="h-64 lg:h-80">
+                  <div className="h-64 lg:h-80 mt-1">
                     <Bar options={chartOptions}  data={chartData} />
                   </div>
 
@@ -164,9 +164,9 @@ const Card = ({img, name, types, abilities, height, weight, stats}) => {
 
             <img alt="arrow" className="w-5 mt-2 bg-white rounded-full cursor-pointer" src = {showInfo? up: down} onClick={() => setShowInfo(!showInfo)}/>
 
-            <p className="mt-2 text-3xl font-thin font-Pixelify">{name}</p>
+            <p className="mt-2 text-3xl lg:text-4xl font-thin font-Pixelify text-center">{name}</p>
 
-            <p className="mb-6 font-Raleway">{types}</p>
+            <p className="mb-6 lg:text-lg font-Raleway text-center">{types}</p>
             
         </div>
     </div>
